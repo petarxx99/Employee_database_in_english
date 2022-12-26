@@ -1,1 +1,1 @@
-main method is in class the com.mainpackage.main.Mainclass.
+main method is in the class com.mainpackage.main.Mainclass.
