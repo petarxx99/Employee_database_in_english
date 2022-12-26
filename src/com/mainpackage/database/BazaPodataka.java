@@ -1,16 +1,14 @@
-package com.glavnipaket;
+package com.mainpackage.database;
 
 
+import com.mainpackage.Zaposleni;
 import com.util.HibernateUtil;
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.swing.*;
 import java.math.BigDecimal;
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BazaPodataka {

@@ -1,16 +1,13 @@
-package com.glavnipaket.prozor;
-import com.glavnipaket.BazaPodataka;
-import com.glavnipaket.Zaposleni;
+package com.mainpackage.display;
+import com.mainpackage.database.BazaPodataka;
+import com.mainpackage.Zaposleni;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 

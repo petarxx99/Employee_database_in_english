@@ -1,8 +1,10 @@
-package com.glavnipaket;
+package com.mainpackage.main;
 
-import com.glavnipaket.prozor.GlavniProzor;
+import com.mainpackage.Zaposleni;
+import com.mainpackage.database.BazaPodataka;
+import com.mainpackage.display.GlavniProzor;
 
-public class GlavnaKlasa {
+public class Mainclass {
 
     public static void main(String[] args){
         BazaPodataka baza = new BazaPodataka(new Class[]{Zaposleni.class});

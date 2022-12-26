@@ -29,7 +29,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
 
-        <mapping class="com.glavnipaket.Zaposleni"/>
+        <mapping class="com.mainpackage.Zaposleni"/>
 
     </session-factory>
 </hibernate-configuration>

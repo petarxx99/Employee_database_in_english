@@ -1,4 +1,4 @@
-package com.glavnipaket;
+package com.mainpackage;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
