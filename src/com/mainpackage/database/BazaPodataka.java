@@ -1,7 +1,7 @@
 package com.mainpackage.database;
 
 
-import com.mainpackage.Zaposleni;
+import com.mainpackage.Employee;
 import com.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -23,16 +23,16 @@ public class BazaPodataka {
     }
 
 
-    public void ubaciteZaposlenogUBazu(Zaposleni zaposleni){
+    public void ubaciteZaposlenogUBazu(Employee employee){
         Session session = otvoriSesiju();
-        session.save(zaposleni);
+        session.save(employee);
         zatvoriSesiju(session);
     }
 
 
-    public List<Zaposleni> prikaziSveZaposlene(){
-        List<Zaposleni> zaReturn = null;
-        String queryString = String.format("FROM Zaposleni as zaposleni");
+    public List<Employee> prikaziSveZaposlene(){
+        List<Employee> zaReturn = null;
+        String queryString = String.format("FROM Employee as zaposleni");
 
         Session session = otvoriSesiju();
         Transaction transaction = null;
@@ -51,10 +51,10 @@ public class BazaPodataka {
     }
 
 
-    public List<Zaposleni> prikaziZaposlenePoUslovu(String uslov, String alijasKlase){
-        List<Zaposleni> zaReturn = null;
+    public List<Employee> prikaziZaposlenePoUslovu(String uslov, String alijasKlase){
+        List<Employee> zaReturn = null;
 
-        String queryString = String.format("FROM Zaposleni as %s WHERE %s", alijasKlase, uslov);
+        String queryString = String.format("FROM Employee as %s WHERE %s", alijasKlase, uslov);
         Transaction transaction = null;
         Session session = otvoriSesiju();
         try{
@@ -75,7 +75,7 @@ public class BazaPodataka {
 
 
     public int izbrisiteZaposlenog(int id){
-        String queryString = String.format("DELETE FROM Zaposleni as zaposleni WHERE zaposleni.pid=%s", id);
+        String queryString = String.format("DELETE FROM Employee as zaposleni WHERE zaposleni.pid=%s", id);
         Session session = otvoriSesiju();
         Transaction transaction = null;
         int zaReturn = NEUSPELO_BRISANJE;
@@ -100,24 +100,24 @@ public class BazaPodataka {
         Transaction transaction = null;
         try{
             transaction = session.beginTransaction();
-            Zaposleni zaposleni = (Zaposleni) session.get(klasaZaposleni, id);
-            if (zaposleni == null){
+            Employee employee = (Employee) session.get(klasaZaposleni, id);
+            if (employee == null){
                 return NEISPRAVAN_ID;
             }
 
             if (ime != null){
-                zaposleni.setIme(ime);
+                employee.setIme(ime);
             }
             if (adresa != null){
-                zaposleni.setAdresa(adresa);
+                employee.setAdresa(adresa);
             }
             if(godine != null){
-                zaposleni.setGodine(godine);
+                employee.setGodine(godine);
             }
             if(visinaDohotka != null){
-                zaposleni.setVisinaDohotka(visinaDohotka);
+                employee.setVisinaDohotka(visinaDohotka);
             }
-            session.update(zaposleni);
+            session.update(employee);
             transaction.commit();
             return SVE_OK;
         } catch(HibernateException e){

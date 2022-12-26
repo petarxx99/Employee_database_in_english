@@ -1,6 +1,6 @@
 package com.mainpackage.display;
+import com.mainpackage.Employee;
 import com.mainpackage.database.BazaPodataka;
-import com.mainpackage.Zaposleni;
 
 import javax.swing.*;
 import java.awt.*;
@@ -153,8 +153,8 @@ public class GlavniProzor extends JFrame {
              }
 
              try{
-                 Zaposleni zaposleni = new Zaposleni(ime, godine, adresa, visinaDohotka);
-                 baza.ubaciteZaposlenogUBazu(zaposleni);
+                 Employee employee = new Employee(ime, godine, adresa, visinaDohotka);
+                 baza.ubaciteZaposlenogUBazu(employee);
                  this.setEnabled(true);
                  f.dispose();
              } catch(Exception e){
@@ -260,7 +260,7 @@ public class GlavniProzor extends JFrame {
                 }
             }
 
-            int daLiJeSveProsloKakoTreba = baza.update(id, ime, godine, adresa, visinaDohotka, Zaposleni.class);
+            int daLiJeSveProsloKakoTreba = baza.update(id, ime, godine, adresa, visinaDohotka, Employee.class);
             switch(daLiJeSveProsloKakoTreba){
                 case BazaPodataka.SVE_OK:{
                     this.setEnabled(true);
@@ -329,9 +329,9 @@ public class GlavniProzor extends JFrame {
         ispisiZaposlene(baza.prikaziSveZaposlene());
     }
 
-    public void ispisiZaposlene(List<Zaposleni> zaposleni){
+    public void ispisiZaposlene(List<Employee> employee){
         StringBuilder sb = new StringBuilder();
-        for(Zaposleni z : zaposleni){
+        for(Employee z : employee){
             sb.append(z);
             sb.append("\n");
         }
@@ -408,7 +408,7 @@ public class GlavniProzor extends JFrame {
                 return;
             }
 
-            String alijasKlase = "zaposleni";
+            String alijasKlase = "employee";
             String ime = null;
             if(checkBoxIme.isSelected()){
                 String imeString = tfIme.getText();
@@ -441,9 +441,9 @@ public class GlavniProzor extends JFrame {
 
             String[] uslovi = new String[]{ime, uslovGodineMin, uslovGodineMax, adresa, uslovDohotkaMin, uslovDohotkaMax};
             String uslov = napraviUslovOdStringovaKojiNisuNull(uslovi);
-            List<Zaposleni> zaposleni = baza.prikaziZaposlenePoUslovu(uslov, alijasKlase);
-            if(zaposleni != null){
-                ispisiZaposlene(zaposleni);
+            List<Employee> employee = baza.prikaziZaposlenePoUslovu(uslov, alijasKlase);
+            if(employee != null){
+                ispisiZaposlene(employee);
                 thisProzor.setEnabled(true);
                 f.dispose();
             }

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name="zaposleni")
-public class Zaposleni {
+public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
@@ -23,16 +23,16 @@ public class Zaposleni {
     @Column(name = "visina_dohotka")
     private BigDecimal visinaDohotka;
 
-    public Zaposleni(){}
+    public Employee(){}
 
-    public Zaposleni(String ime, int godine, String adresa, BigDecimal visinaDohotka) {
+    public Employee(String ime, int godine, String adresa, BigDecimal visinaDohotka) {
         this.ime = ime;
         this.godine = godine;
         this.adresa = adresa;
         this.visinaDohotka = visinaDohotka;
     }
 
-    public Zaposleni(int id, String ime, int godine, String adresa, BigDecimal visinaDohotka){
+    public Employee(int id, String ime, int godine, String adresa, BigDecimal visinaDohotka){
         this.pid = id;
         this.ime = ime;
         this.godine = godine;
